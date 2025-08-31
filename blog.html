@@ -1,19 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Personal Site</title>
+    <title>Personal Blog</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
-  <body style="background-color: #f2f2f4">
+  <body style="background-color: #f2f4f4; font-family: sans-serif">
     <header
       style="
-        height: 50px;
         background-color: #fdfffc;
-        color: #31afd4;
+        height: 60px;
+        width: 100%;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         display: flex;
-        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px;
       "
-    ></header>
+    >
+      <div style="font-weight: bold; color: #006e90; font-size: 1.2rem">
+        BALAJI K
+      </div>
+      <nav>
+        <a
+          href="#contact"
+          style="
+            text-decoration: none;
+            color: #006e90;
+            margin-left: 20px;
+            font-weight: bold;
+          "
+          >CONTACT</a
+        >
+      </nav>
+    </header>
+
+    <main>
+      <section
+        id="intro"
+        style="
+          display: flex;
+          height: auto;
+          width: 95%;
+          align-items: center;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+          margin: 20px auto;
+          background-color: #f2f4f3;
+          padding: 40px 20px;
+          border-radius: 8px;
+        "
+      >
+        <div style="text-align: left; padding-left: 30px; width: 55%">
+          <h1
+            style="
+              font-family: monospace, sans-serif;
+              font-size: 2rem;
+              margin-bottom: 1rem;
+              color: #9381ff;
+            "
+          >
+            Hey, I'm BALAJI!
+          </h1>
+          <p
+            style="
+              font-family: sans-serif;
+              font-size: 1.2rem;
+              margin-bottom: 1rem;
+              color: #111;
+              line-height: 1.6;
+            "
+          >
+             I'm an aspiring fullstack developer who enjoys learning and building simple, useful web applications. I believe in writing clean code, paying attention to design, and improving step by step. 
+          </p>
+          <button
+            onclick="location.href='#achievements'"
+            style="
+              padding: 10px 15px;
+              background-color: #b8b8ff;
+              border-radius: 5px;
+              font-family: monospace;
+              font-size: 1.2rem;
+              margin-top: 5px;
+              cursor: pointer;
+              color: #1b1f3b;
+              border: 1px solid #111;
+            "
+          >
+            Get Started
+          </button>
+        </div>
+        <div style="width: 45%; text-align: center">
+          <img
+            src="./img/photo.jpg"
+            alt="Balaji K"
+            style="border-radius: 15%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)"
+          />
+        </div>
+      </section>
+
+      <section id="achievements" style="margin-top: 40px; padding: 0 20px">
+        <h1
+          style="
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 2rem;
+            color: #9381ff;
+            margin-bottom: 30px;
+          "
+        >
+          Recent Learnings
+        </h1>
+
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 30px;
+            flex-wrap: wrap;
+          "
+        >
+          <article
+            style="
+              background-color: #fff;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+              width: 400px;
+              text-align: center;
+            "
+          >
+            <h2
+              style="
+                font-family: monospace;
+                color: #9381ff;
+                margin-bottom: 15px;
+              "
+            >
+              HTML | CSS
+            </h2>
+            <p
+              style="
+                font-family: sans-serif;
+                font-size: 1rem;
+                line-height: 1.5;
+                color: #333;
+              "
+            >
+              HTML is the standard markup language used to create web pages. It structures the content using elements like headings, paragraphs, and links.<br><br>
+              CSS controls the visual style of web pages. It handles colors, spacing, layout, fonts, and responsiveness across different screen sizes.   
+            </p>
+          </article>
+
+          <article
+            style="
+              background-color: #fff;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+              width: 400px;
+              text-align: center;
+            "
+          >
+            <h2
+              style="
+                font-family: monospace;
+                color: #9381ff;
+                margin-bottom: 15px;
+              "
+            >
+              JavaScript
+            </h2>
+            <p
+              style="
+                font-family: sans-serif;
+                font-size: 1rem;
+                line-height: 1.5;
+                color: #333;
+              "
+            >
+            JavaScript adds interactivity and logic to websites. It responds to user actions, updates content, and powers dynamic functionality. Working  with HTML and CSS, it forms the foundational trio of modern web development.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          margin-top: 40px;
+          padding: 0 20px;
+          flex-wrap: wrap;
+        "
+      >
+        <aside
+          style="
+            background-color: #fef9ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 400px;
+          "
+        >
+          <h2
+            style="
+              font-family: monospace;
+              color: #9381ff;
+              margin-bottom: 15px;
+              border-bottom: 2px solid #9381ff;
+              padding-bottom: 5px;
+            "
+          >
+            Education
+          </h2>
+          <p style="font-size: 1.1rem; margin-bottom: 10px">
+            <strong>College:</strong> PSG College of Technology
+          </p>
+          <p style="font-size: 1.1rem; margin-bottom: 10px">
+            <strong>Course:</strong> Master of Computer Applications (MCA)
+          </p>
+          <p style="font-size: 1.1rem; margin-bottom: 10px">
+            <strong>City:</strong> Coimbatore, Tamil Nadu
+          </p>
+        </aside>
+
+        <aside
+          id="contact"
+          style="
+            background-color: #fef9ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 400px;
+          "
+        >
+          <h2
+            style="
+              font-family: monospace;
+              color: #9381ff;
+              margin-bottom: 15px;
+              border-bottom: 2px solid #9381ff;
+              padding-bottom: 5px;
+            "
+          >
+            Additional Info
+          </h2>
+          <p style="font-size: 1.1rem; margin-bottom: 10px">
+            <strong>Email:</strong>
+            <a
+              href="mailto:balajikumar.official@gmail.com"
+              style="color: #006e90"
+              >balajikumar.official@gmail.com</a
+            >
+          </p>
+          <p style="font-size: 1.1rem; margin-bottom: 10px">
+            <strong>Hobbies:</strong> Learning new Tech Stacks, UI/UX Design.
+          </p>
+          <p style="font-size: 1.1rem; margin-bottom: 10px">
+            <strong>Socials:</strong>
+            <a href="" style="color: #006e90">LinkedIn</a> |
+            <a href="https://github.com/balaji-devx" style="color: #006e90">GitHub</a>
+          </p>
+        </aside>
+      </div>
+    </main>
+
+    <footer
+      style="
+        margin-top: 50px;
+        background-color: #343a40;
+        color: #f8f9fa;
+        text-align: center;
+        padding: 20px 0;
+      "
+    >
+      <p>&copy; 25MX126 | August 2025</p>
+    </footer>
   </body>
 </html>
