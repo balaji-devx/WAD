@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style/form.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style/form.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
-</head>
-<body style="background-color: #f2f4f4;">
+  </head>
+  <body style="background-color: #f2f4f4">
     <legend>REGISTRATION FORM</legend>
     <div>
-    <form action="">
+      <form action="">
         <label for="name">NAME</label>
-        <input type="text" required name="name" id="name">
+        <input type="text" required name="name" id="name" />
         <label for="RollNo:">ROLL NO</label>
-        <input type="text" required name="RollNo" id="RollNo">
+        <input type="text" required name="RollNo" id="RollNo" />
         <label for="native">NATIVE</label>
-        <input type="text" required name="native" id="native">
+        <input type="text" required name="native" id="native" />
         <label for="email">EMAIL</label>
-        <input type="email" required name="email" id="email">
+        <input type="email" required name="email" id="email" />
         <label for="RollNo:">PASSWORD</label>
-        <input type="password" required name="password" id="password">
+        <input type="password" required name="password" id="password" />
+        <label for="status">COMMUTER STATUS</label>
+        <input
+          class="radio"
+          type="radio"
+          name="status"
+          id="status"
+          value="DAY SCHOLAR"
+        />
+        <label class="radio" for="DAY SCHOLAR">DAY SCHOLAR</label>
+        <input
+          class="radio"
+          type="radio"
+          name="status"
+          id="status"
+          value="HOSTELLER"
+        />
+        <label class="radio" for="HOSTELLER">HOSTELLER</label>
         <button onclick="alert('THANK YOU FOR SUBMITTING')">SUBMIT</button>
-    </form>
+      </form>
     </div>
-</body>
+  </body>
 </html>
