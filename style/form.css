@@ -1,62 +1,76 @@
- *{
-            margin: 0;
-            padding: none;
-            box-sizing: border-box;
-        }
-        div{
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            text-align: center;
-            margin: auto;
-            background-color: rgb(230, 230, 250);
-            border-radius: 10px;
-            height: 500px;
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+}
+div {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin: 50px auto; /* Added margin-top/bottom for spacing */
+  background-color: rgb(230, 230, 250);
+  border-radius: 10px;
+  height: auto; /* <-- THE FIX! */
+}
 
-        form{
-            width: fit-content;
-            margin: 0 auto;
-        }
+form {
+  width: 100%; /* Allow form to use the space in the container */
+}
+fieldset {
+  border: none; /* Removes the default fieldset border */
+}
+legend {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 20px;
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+}
 
-        input{
-            display: block;
-            border-radius: 10px;
-            height: 30px;
-            border: 2px solid rgb(194, 189, 189);
-        }
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  display: block;
+  width: 100%; /* Make inputs fill the form width */
+  border-radius: 10px;
+  height: 40px; /* Increased height slightly for better spacing */
+  border: 2px solid rgb(194, 189, 189);
+  padding: 0 10px; /* Add padding inside the input fields */
+}
 
-        label{
-            margin-bottom: 10px;
-            margin-top: 10px;
-            display: block;
-            font-family: 'Courier New', Courier, monospace;
-            color: black;
-            font-size: larger;
-            text-align: left;
-        }
+label {
+  margin-bottom: 8px;
+  margin-top: 15px;
+  display: block;
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+  font-size: larger;
+  text-align: left;
+}
 
-        legend{
-            text-align: center;
-            margin-top: 100px;
-            padding: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            color: dark;
-            font-size: 2rem;
-        }
-        button{
-            margin-top: 20px;
-            padding: 5px;
-            border-radius: 5px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 1.2rem;
-            background-color: rgb(222, 231, 228);
-            cursor: pointer;
-            border: 1px solid rgb(121, 113, 113);
-        }
+button {
+  margin-top: 30px;
+  padding: 10px 15px;
+  width: 100%;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  background-color: rgb(222, 231, 228);
+  cursor: pointer;
+  border: 1px solid rgb(121, 113, 113);
+}
 
-        .radio{
-            display: inline-block;
-        }
+.radio {
+  display: inline-block;
+  /* Resetting margin for radio labels to align them properly */
+  margin-top: 0;
+  margin-right: 5px;
+}
