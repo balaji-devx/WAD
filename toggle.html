@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toggle Text Example</title>
+  <style>
+    #message {
+      font-size: 24px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Toggle Text Demo</h2>
+  <p id="message">Happy Pooja</p>
+  <button id="toggleBtn">Toggle Message</button>
+
+  <script>
+    let isPooja = true; // track state
+
+    document.getElementById("toggleBtn").onclick = function() {
+      const msg = document.getElementById("message");
+      if (isPooja) {
+        msg.innerText = "Happy Learning";
+      } else {
+        msg.innerText = "Happy Pooja";
+      }
+      isPooja = !isPooja; // flip the state
+    };
+  </script>
+
+</body>
+</html>

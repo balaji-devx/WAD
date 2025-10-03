@@ -3,116 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Object Model</title>
+    <title>Interactive DOM Lab</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        #controls {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        #controls button, #dynamic-controls button {
+            margin: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+        }
+        #controls button:hover, #dynamic-controls button:hover {
+            background-color: #e0e0e0;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px dashed #ccc;
+            min-height: 40px;
+        }
+    </style>
 </head>
 <body>
-     <h2 id="heading">Welcome to DOM Lab</h2>
-  <p id="para1">This is the first paragraph.</p>
-  <p class="intro">This is the second paragraph with class intro.</p>
-  <p class="intro">This is the third paragraph with class intro.</p>
-  <p name="note">This paragraph uses a name attribute.</p>
+    <h2 id="heading">Welcome to DOM Lab</h2>
+    <p id="para1">This is the first paragraph.</p>
+    <p class="intro">This is the second paragraph with class intro.</p>
+    <p class="intro">This is the third paragraph with class intro.</p>
+    <p name="note">This paragraph uses a name attribute.</p>
 
+    <ul>
+        <li class="item">Apple</li>
+        <li class="item">Banana</li>
+        <li class="item">Cherry</li>
+    </ul>
 
-  <ul>
-    <li class="item">Apple</li>
-    <li class="item">Banana</li>
-    <li class="item">Cherry</li>
-  </ul>
+    <div id="output">Initial output area.</div>
+    
+    <div id="controls">
+        <h3>DOM Operations (Click to Execute)</h3>
+        <button onclick="op1_changeHeadingText()">1. Change Heading Text</button>
+        <button onclick="op2_colorIntroParas()">2. Color Intro Paras Blue</button>
+        <button onclick="op3_countAllParagraphs()">3. Count All Paragraphs</button>
+        <button onclick="op4_styleNotePara()">4. Style 'note' Para Background</button>
+        <button onclick="op5_boldFirstListItem()">5. Bold First List Item</button>
+        <button onclick="op6_modifyPara1()">6. Append "Modified" to Para 1</button>
+        <button onclick="op7_colorAllListItems()">7. Color All List Items Green</button>
+        <button onclick="op8_logIntroParas()">8. Log Inner HTML of Intro Paras</button>
+        <button onclick="op9_compareIdSelectors()">9. Log #para1 (getById vs querySelector)</button>
+        <button onclick="op10_compareClassSelectors()">10. Log .intro (getByClass vs querySelectorAll)</button>
+        <button onclick="op11_colorLastListItem()">11. Color Last List Item Orange</button>
+        <button onclick="op12_setListItemType()">12. Set List Item Type Attr (Inspect to see)</button>
+        <button onclick="op13_hideSecondPara()">13. Hide Second Paragraph</button>
+        <button onclick="op14_underlineThirdPara()">14. Underline Third Paragraph</button>
+        <button onclick="op15_highlightListItems()">15. Highlight List Items Yellow</button>
+        <button onclick="op16_logHeadingTagName()">16. Log Heading Tag Name</button>
+        <button onclick="op17_colorNotePara()">17. Color 'note' Para Text Red</button>
+        <button onclick="op18_logAllParaHTML()">18. Log Inner HTML of All Paras</button>
+        <button onclick="op19_changePara1Id()">19. Change Para 1 ID to 'firstPara'</button>
+        <button onclick="op20_appendGrapes()">20. Append 'Grapes' to List</button>
+        <button onclick="op21_addFontSizeButton()">21. Create Font Size Button</button>
+        <button onclick="op22_addHighlightButton()">22. Create List Highlight Button</button>
+        <button onclick="op23_countIntroParas()">23. Count Intro Paragraphs</button>
+        <button onclick="op24_addTagCounter()">24. Create Tag Counter Input & Button</button>
+        <button onclick="op25_makeHeadingClickable()">25. Make Heading Clickable (Toggle Color)</button>
+    </div>
 
+    <div id="dynamic-controls"></div>
 
-  <button onclick="runCode()">Run</button>
-  <div id="output"></div>
+    <script>
+        // Operation 1: Change Heading Text
+        function op1_changeHeadingText() {
+            const h2 = document.getElementById('heading');
+            h2.innerHTML = "DOM Lab in Progress";
+        }
 
-
-  <script>
-    function runCode() {
-      // Students write their JavaScript code here
-            const h2 = document.getElementById('heading')
-                h2.innerHTML = "DOM Lab in Progress";
-
+        // Operation 2: Color Intro Paragraphs
+        function op2_colorIntroParas() {
             const p = document.getElementsByClassName('intro');
             for (let para of p) {
                 para.style.color = "blue";
             }
-            
+        }
+
+        // Operation 3: Count All Paragraphs
+        function op3_countAllParagraphs() {
             const count = document.getElementsByTagName('p').length;
             document.getElementById('output').innerHTML = "Total paragraphs: " + count;
+        }
 
+        // Operation 4: Style 'note' Paragraph Background
+        function op4_styleNotePara() {
             const name = document.getElementsByName('note');
             for (let n of name) {
                 n.style.backgroundColor = "aliceblue";
             }
+        }
 
+        // Operation 5: Bold First List Item
+        function op5_boldFirstListItem() {
             const li = document.querySelector('li');
             li.style.fontWeight = "bold";
+        }
 
+        // Operation 6: Append text to Paragraph 1
+        function op6_modifyPara1() {
             const id = document.querySelector('#para1');
-            id.innerHTML += "Modified";
+            id.innerHTML += " [Modified]";
+        }
 
+        // Operation 7: Color all list items
+        function op7_colorAllListItems() {
             const lis = document.querySelectorAll('li');
-            for( let item of lis){
+            for (let item of lis) {
                 item.style.color = "green";
             }
+        }
 
+        // Operation 8: Log Inner HTML of Intro Paragraphs
+        function op8_logIntroParas() {
+            console.clear(); // Clear console for clean output
+            console.log("--- Logging .intro paragraph content ---");
             const all = document.querySelectorAll('p.intro');
-            for(let a of all){
+            for (let a of all) {
                 console.log(a.innerHTML);
             }
+        }
 
+        // Operation 9: Compare ID selectors
+        function op9_compareIdSelectors() {
+            console.clear();
+            console.log("--- Comparing ID selectors ---");
             const com = document.getElementById('para1');
-            console.log(com);
+            console.log("getElementById('para1'):", com);
             const comp = document.querySelector('#para1');
-            console.log(comp);
+            console.log("querySelector('#para1'):", comp);
+        }
 
+        // Operation 10: Compare Class selectors
+        function op10_compareClassSelectors() {
+            console.clear();
+            console.log("--- Comparing Class selectors ---");
             const cls = document.getElementsByClassName('intro');
-            console.log(cls);
+            console.log("getElementsByClassName('intro') (HTMLCollection):", cls);
             const clss = document.querySelectorAll('.intro');
-            console.log(clss);
+            console.log("querySelectorAll('.intro') (NodeList):", clss);
+        }
 
-
+        // Operation 11: Color the last list item
+        function op11_colorLastListItem() {
             const last = document.querySelector('ul li:last-child');
-             last.style.color = "orange";
+            last.style.color = "orange";
+        }
 
-                const listItems = document.querySelectorAll('.item');
-                for(let i=0; i<listItems.length; i++){
-                    listItems[i].type = "1";
-                }
+        // Operation 12: Set list item 'type' attribute
+        function op12_setListItemType() {
+            const listItems = document.querySelectorAll('.item');
+            for (let i = 0; i < listItems.length; i++) {
+                listItems[i].setAttribute("type", "1"); // Use setAttribute for clarity
+            }
+            alert("The 'type' attribute was set on <li> elements. Inspect them in Dev Tools to see it.");
+        }
 
+        // Operation 13: Hide the second paragraph
+        function op13_hideSecondPara() {
             const second = document.getElementsByTagName('p')[1];
             second.style.display = "none";
+        }
 
-            
-            const under = document.getElementsByClassName('intro')[1];
-            under.style.textDecoration = "underline";
+        // Operation 14: Underline the third paragraph
+        function op14_underlineThirdPara() {
+            const under = document.getElementsByClassName('intro')[1]; // This is the third <p> overall
+            if (under) under.style.textDecoration = "underline";
+        }
 
-
+        // Operation 15: Highlight list items yellow
+        function op15_highlightListItems() {
             const ly = document.getElementsByClassName('item');
-            for(let l of ly){
+            for (let l of ly) {
                 l.style.backgroundColor = "lightyellow";
             }
+        }
 
+        // Operation 16: Log the heading's tag name
+        function op16_logHeadingTagName() {
+            console.clear();
             const tag = document.querySelector('#heading');
             const tg = tag.tagName.toLowerCase();
-            console.log(tg);
+            console.log("Tag name of #heading is:", tg);
+        }
 
+        // Operation 17: Color the 'note' paragraph text
+        function op17_colorNotePara() {
             const sel = document.querySelector("[name='note']");
             sel.style.color = "red";
+        }
 
+        // Operation 18: Log inner HTML of all paragraphs
+        function op18_logAllParaHTML() {
+            console.clear();
+            console.log("--- Logging all paragraph content ---");
             const para = document.querySelectorAll('p');
-            for(let p of para){
+            for (let p of para) {
                 console.log(p.innerHTML);
             }
+        }
 
+        // Operation 19: Change the ID of paragraph 1
+        function op19_changePara1Id() {
             const ch = document.getElementById('para1');
-            ch.id = "firstPara";
+            if (ch) {
+                ch.id = "firstPara";
+                alert("ID of first paragraph changed from 'para1' to 'firstPara'.");
+            } else {
+                alert("Element with ID 'para1' not found. Maybe it was already changed?");
+            }
+        }
 
+        // Operation 20: Append 'Grapes' to the list
+        function op20_appendGrapes() {
             const ap = document.querySelector('ul');
             const newItem = document.createElement('li');
             newItem.textContent = "Grapes";
             ap.appendChild(newItem);
+        }
 
-
+        // Operation 21: Create a button to increase font size
+        function op21_addFontSizeButton() {
+            if (document.getElementById('fontBtn')) return; // Prevents adding multiple buttons
             const fontBtn = document.createElement('button');
+            fontBtn.id = "fontBtn";
             fontBtn.textContent = "Increase Paragraph Font Size";
             fontBtn.onclick = function() {
                 const paras = document.querySelectorAll("p");
@@ -122,47 +250,59 @@
                     p.style.fontSize = newSize;
                 });
             };
-            document.body.appendChild(fontBtn);
+            document.getElementById('dynamic-controls').appendChild(fontBtn);
+        }
 
-            
+        // Operation 22: Create a button to highlight list items
+        function op22_addHighlightButton() {
+            if (document.getElementById('highlightBtn')) return;
             const highlightBtn = document.createElement('button');
-            highlightBtn.textContent = "Highlight List Items";
+            highlightBtn.id = 'highlightBtn';
+            highlightBtn.textContent = "Highlight List Items (Green)";
             highlightBtn.onclick = function() {
                 const items = document.querySelectorAll("li");
                 items.forEach(item => {
                     item.style.backgroundColor = "lightgreen";
                 });
             };
-            document.body.appendChild(highlightBtn);
+            document.getElementById('dynamic-controls').appendChild(highlightBtn);
+        }
 
-
+        // Operation 23: Count paragraphs with class 'intro'
+        function op23_countIntroParas() {
             const introCount = document.querySelectorAll(".intro").length;
             document.getElementById('output').innerHTML += "<br>Intro paragraphs: " + introCount;
-
-   
+        }
+        
+        // Operation 24: Create a tag counter input and button
+        function op24_addTagCounter() {
+            if (document.getElementById('tagInput')) return;
             const input = document.createElement('input');
             input.type = "text";
-            input.placeholder = "Enter tag name";
+            input.placeholder = "Enter tag name (e.g., p)";
             input.id = "tagInput";
             const tagBtn = document.createElement('button');
-            tagBtn.textContent = "Count Tag Elements";
+            tagBtn.textContent = "Count Elements By Tag";
             tagBtn.onclick = function() {
                 const tag = document.getElementById('tagInput').value;
-                if(tag) {
+                if (tag) {
                     const count = document.getElementsByTagName(tag).length;
                     document.getElementById('output').innerHTML += `<br>Elements with tag "${tag}": ${count}`;
                 }
             };
-            document.body.appendChild(input);
-            document.body.appendChild(tagBtn);
+            const container = document.getElementById('dynamic-controls');
+            container.appendChild(input);
+            container.appendChild(tagBtn);
+        }
 
-
+        // Operation 25: Make the heading clickable to toggle color
+        function op25_makeHeadingClickable() {
             const heading = document.querySelector("h2");
             heading.onclick = function() {
                 heading.style.color = heading.style.color === "red" ? "black" : "red";
             };
-
+            alert("The main heading is now clickable! Click it to toggle its color.");
         }
-  </script> 
+    </script>
 </body>
 </html>
