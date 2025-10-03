@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style/form.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body style="background-color: #f2f4f4">
+    <div>
+      <form action="">
+        <fieldset>
+          <legend>REGISTRATION FORM</legend>
+
+          <label for="name">NAME</label>
+          <input type="text" required name="name" id="name" />
+
+          <label for="rollNo">ROLL NO</label>
+          <input type="text" required name="rollNo" id="rollNo" />
+
+          <label for="department">DEPARTMENT</label>
+          <select name="department" id="department" required>
+            <option value="">--Select Department--</option>
+            <option value="MCA">Computer Applications (MCA)</option>
+            <option value="CSE">Computer Science</option>
+            <option value="IT">Information Technology</option>
+            <option value="ECE">Electronics & Communication</option>
+          </select>
+
+          <label for="native">NATIVE</label>
+          <input type="text" required name="native" id="native" />
+
+          <label for="email">EMAIL</label>
+          <input type="email" required name="email" id="email" />
+
+          <label for="password">PASSWORD</label>
+          <input type="password" required name="password" id="password" />
+
+          <label for="status">COMMUTER STATUS</label>
+          <input
+            class="radio"
+            type="radio"
+            name="status"
+            id="day-scholar"
+            value="DAY SCHOLAR"
+          />
+          <label class="radio" for="day-scholar">DAY SCHOLAR</label>
+          <input
+            class="radio"
+            type="radio"
+            name="status"
+            id="hosteller"
+            value="HOSTELLER"
+          />
+          <label class="radio" for="hosteller">HOSTELLER</label>
+          <button type="submit" onclick="alert('THANK YOU FOR SUBMITTING')">
+            SUBMIT
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>
