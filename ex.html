@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Manipulation Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .demo-box { border: 1px solid #444; padding: 10px; margin-bottom: 15px; }
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+
+  <h1>DOM Manipulation Demo</h1>
+
+  <!-- InnerHTML -->
+  <div id="innerHTMLDemo" class="demo-box">Original Content</div>
+  <button onclick="useInnerHTML()">Change with innerHTML</button>
+
+  <!-- InnerText -->
+  <div id="innerTextDemo" class="demo-box">Original <b>Bold</b> Content</div>
+  <button onclick="useInnerText()">Change with innerText</button>
+
+  <!-- textContent -->
+  <div id="textContentDemo" class="demo-box">Original <i>Italic</i> Content</div>
+  <button onclick="useTextContent()">Change with textContent</button>
+
+  <!-- insertAdjacentHTML -->
+  <div id="insertHTMLDemo" class="demo-box">I have children:</div>
+  <button onclick="useInsertAdjacentHTML()">Insert Adjacent HTML</button>
+
+  <!-- appendChild -->
+  <div id="appendChildDemo" class="demo-box">Parent Div</div>
+  <button onclick="useAppendChild()">Append Child</button>
+
+  <!-- replaceChild -->
+  <div id="replaceChildDemo" class="demo-box"><p id="oldPara">Old Paragraph</p></div>
+  <button onclick="useReplaceChild()">Replace Child</button>
+
+  <!-- document.write -->
+  <div class="demo-box"> Warning: This will overwrite the whole page!</div>
+  <button onclick="useDocumentWrite()">Use document.write()</button>
+
+  <script>
+    // innerHTML
+    function useInnerHTML() {
+      document.getElementById("innerHTMLDemo").innerHTML = "<b>New Bold Content</b>";
+    }
+
+    // innerText
+    function useInnerText() {
+      document.getElementById("innerTextDemo").innerText = "<b>Replaced Text</b>";
+    }
+
+    // textContent
+    function useTextContent() {
+      document.getElementById("textContentDemo").textContent = "<i>Replaced with textContent</i>";
+    }
+
+    // insertAdjacentHTML
+    function useInsertAdjacentHTML() {
+      document.getElementById("insertHTMLDemo")
+        .insertAdjacentHTML("beforeend", "<p> Inserted Child using insertAdjacentHTML()</p>");
+    }
+
+    // appendChild
+    function useAppendChild() {
+      let newPara = document.createElement("p");
+      newPara.innerHTML = " Added using appendChild()";
+      document.getElementById("appendChildDemo").appendChild(newPara);
+    }
+
+    // replaceChild
+    function useReplaceChild() {
+      let newNode = document.createElement("p");
+      newNode.innerHTML = " I replaced the old paragraph!";
+      let parent = document.getElementById("replaceChildDemo");
+      let oldNode = document.getElementById("oldPara");
+      parent.replaceChild(newNode, oldNode);
+    }
+
+    // document.write
+    function useDocumentWrite() {
+      document.write("<h2>Page erased! New Content Written</h2>");
+    }
+  </script>
+
+</body>
+</html>

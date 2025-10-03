@@ -27,11 +27,142 @@
   <script>
     function runCode() {
       // Students write their JavaScript code here
-            function changetext(){
             const h2 = document.getElementById('heading')
-                heading.innerHTML = "DOM Lab in Progress"
+                h2.innerHTML = "DOM Lab in Progress";
+
+            const p = document.getElementsByClassName('intro');
+            for (let para of p) {
+                para.style.color = "blue";
             }
-    }
+            
+            const count = document.getElementsByTagName('p').length;
+            document.getElementById('output').innerHTML = "Total paragraphs: " + count;
+
+            const name = document.getElementsByName('note');
+            for (let n of name) {
+                n.style.backgroundColor = "aliceblue";
+            }
+
+            const li = document.querySelector('li');
+            li.style.fontWeight = "bold";
+
+            const id = document.querySelector('#para1');
+            id.innerHTML += "Modified";
+
+            const lis = document.querySelectorAll('li');
+            for( let item of lis){
+                item.style.color = "green";
+            }
+
+            const all = document.querySelectorAll('p.intro');
+            for(let a of all){
+                console.log(a.innerHTML);
+            }
+
+            const com = document.getElementById('para1');
+            console.log(com);
+            const comp = document.querySelector('#para1');
+            console.log(comp);
+
+            const cls = document.getElementsByClassName('intro');
+            console.log(cls);
+            const clss = document.querySelectorAll('.intro');
+            console.log(clss);
+
+
+            const last = document.querySelector('ul li:last-child');
+             last.style.color = "orange";
+
+                const listItems = document.querySelectorAll('.item');
+                for(let i=0; i<listItems.length; i++){
+                    listItems[i].type = "1";
+                }
+
+            const second = document.getElementsByTagName('p')[1];
+            second.style.display = "none";
+
+            
+            const under = document.getElementsByClassName('intro')[1];
+            under.style.textDecoration = "underline";
+
+
+            const ly = document.getElementsByClassName('item');
+            for(let l of ly){
+                l.style.backgroundColor = "lightyellow";
+            }
+
+            const tag = document.querySelector('#heading');
+            const tg = tag.tagName.toLowerCase();
+            console.log(tg);
+
+            const sel = document.querySelector("[name='note']");
+            sel.style.color = "red";
+
+            const para = document.querySelectorAll('p');
+            for(let p of para){
+                console.log(p.innerHTML);
+            }
+
+            const ch = document.getElementById('para1');
+            ch.id = "firstPara";
+
+            const ap = document.querySelector('ul');
+            const newItem = document.createElement('li');
+            newItem.textContent = "Grapes";
+            ap.appendChild(newItem);
+
+
+            const fontBtn = document.createElement('button');
+            fontBtn.textContent = "Increase Paragraph Font Size";
+            fontBtn.onclick = function() {
+                const paras = document.querySelectorAll("p");
+                paras.forEach(p => {
+                    const currentSize = window.getComputedStyle(p).fontSize;
+                    const newSize = (parseFloat(currentSize) + 2) + "px";
+                    p.style.fontSize = newSize;
+                });
+            };
+            document.body.appendChild(fontBtn);
+
+            
+            const highlightBtn = document.createElement('button');
+            highlightBtn.textContent = "Highlight List Items";
+            highlightBtn.onclick = function() {
+                const items = document.querySelectorAll("li");
+                items.forEach(item => {
+                    item.style.backgroundColor = "lightgreen";
+                });
+            };
+            document.body.appendChild(highlightBtn);
+
+
+            const introCount = document.querySelectorAll(".intro").length;
+            document.getElementById('output').innerHTML += "<br>Intro paragraphs: " + introCount;
+
+   
+            const input = document.createElement('input');
+            input.type = "text";
+            input.placeholder = "Enter tag name";
+            input.id = "tagInput";
+            const tagBtn = document.createElement('button');
+            tagBtn.textContent = "Count Tag Elements";
+            tagBtn.onclick = function() {
+                const tag = document.getElementById('tagInput').value;
+                if(tag) {
+                    const count = document.getElementsByTagName(tag).length;
+                    document.getElementById('output').innerHTML += `<br>Elements with tag "${tag}": ${count}`;
+                }
+            };
+            document.body.appendChild(input);
+            document.body.appendChild(tagBtn);
+
+
+            const heading = document.querySelector("h2");
+            heading.onclick = function() {
+                heading.style.color = heading.style.color === "red" ? "black" : "red";
+            };
+
+        }
   </script> 
 </body>
 </html>
