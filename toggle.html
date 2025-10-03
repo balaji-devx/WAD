@@ -8,13 +8,20 @@
       font-weight: bold;
       color: darkblue;
     }
+
+    #eve{
+        font-size: 20px;
+        color: green;
+    }
   </style>
 </head>
 <body>
 
   <h2>Toggle Text Demo</h2>
   <p id="message">Happy Pooja</p>
+  <p id ="eve">Double Click</p>
   <button id="toggleBtn">Toggle Message</button>
+  <button id="event" ondblclick="ready()">Event Listener</button>
 
   <script>
     let isPooja = true; // track state
@@ -28,6 +35,11 @@
       }
       isPooja = !isPooja; // flip the state
     };
+
+function ready() {
+    const eve = document.getElementById("eve");
+    eve.innerText = "Ready for CA 1";
+}
   </script>
 
 </body>
