@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+</head>
+<body>
+     <h2 id="heading">Welcome to DOM Lab</h2>
+  <p id="para1">This is the first paragraph.</p>
+  <p class="intro">This is the second paragraph with class intro.</p>
+  <p class="intro">This is the third paragraph with class intro.</p>
+  <p name="note">This paragraph uses a name attribute.</p>
+
+
+  <ul>
+    <li class="item">Apple</li>
+    <li class="item">Banana</li>
+    <li class="item">Cherry</li>
+  </ul>
+
+
+  <button onclick="runCode()">Run</button>
+  <div id="output"></div>
+
+
+  <script>
+    function runCode() {
+      // Students write their JavaScript code here
+            function changetext(){
+            const h2 = document.getElementById('heading')
+                heading.innerHTML = "DOM Lab in Progress"
+            }
+    }
+  </script> 
+</body>
+</html>
