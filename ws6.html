@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Parking Registration</title>
+  <style>
+    body {
+      background-color: #f5f5dc; /* cornsilk */
+      font-family: Arial, sans-serif;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 2rem 2.5rem;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border: 1px solid #cccccc;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.75rem;
+      color: #333333;
+    }
+
+    fieldset {
+      border: 1px solid #dddddd;
+      background-color: #f0f8ff; /* aliceblue */
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    legend {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #333333;
+      padding: 0 0.5rem;
+    }
+    
+    .input-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .choice-group label {
+        display: inline-block;
+        margin-right: 1.5rem;
+        font-weight: normal;
+    }
+    
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin-right: 0.5rem;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      margin: 0 0.5rem;
+    }
+
+    button[type="submit"] {
+      background-color: rgb(40, 167, 69); /* green */
+    }
+
+    button[type="reset"] {
+      background-color: rgb(220, 53, 69); /* red */
+    }
+    
+    #success {
+      display: none;
+      margin: 2rem auto;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: rgb(21, 87, 36); /* darkgreen */
+      background-color: rgb(209, 231, 221);
+      border: 1px solid rgb(173, 216, 173);
+      border-radius: 8px;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    :target {
+      display: block;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Vehicle Parking Registration</h1>
+    </header>
+
+    <form action="#success" method="post">
+      <fieldset>
+        <legend>Owner Details</legend>
+        <div class="input-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="NAME" required pattern="[a-zA-Z\s]+" placeholder="Enter full name">
+        </div>
+        <div class="input-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phno" required pattern="[6-9]{1}[0-9]{9}" placeholder="Enter 10-digit mobile number">
+        </div>
+        <div class="input-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required placeholder="Enter valid email address">
+        </div>
+        <div class="input-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="ADDRESS" placeholder="Enter your current address"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Vehicle & Parking Details</legend>
+        <div class="input-group">
+          <label for="vno">Vehicle Number:</label>
+          <input type="text" id="vno" name="vno" placeholder="e.g., TN 37 DZ 1234">
+        </div>
+        <div class="input-group">
+          <label>Vehicle Type:</label>
+          <div class="choice-group">
+            <label><input type="radio" name="type" value="two wheeler"> Two Wheeler</label>
+            <label><input type="radio" name="type" value="four wheeler"> Four Wheeler</label>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="idproof">Upload ID Proof:</label>
+          <input type="file" id="idproof" name="idproof">
+        </div>
+      </fieldset>
+
+      <div class="button-group">
+        <button type="submit">Submit</button>
+        <button type="reset">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="success">
+    Thank you! Your form has been submitted successfully.
+  </div>
+</body>
+</html>
+

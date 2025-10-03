@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>World Map with Labels</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgba(46, 227, 247, 0.808);
+      text-align: center\\\\;
+      margin: 0;
+      padding: 0;
+    }
+    .map-container {
+      position: relative; 
+      display: inline-block;
+    }
+
+    .world-map {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    .label {
+      position: absolute; 
+      color: red;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .label::first-letter {
+      color: green;
+    }
+    .label:hover {
+      background-color: lightblue;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+    .africa {
+      top: 55%;
+      left: 52%;
+    }
+
+    .asia {
+      top: 35%;
+      left: 65%;
+    }
+
+    .europe {
+      top: 28%;
+      left: 55%;
+    }
+
+    .north-america {
+      top: 28%;
+      left: 20%;
+    }
+
+    .south-america {
+      top: 60%;
+      left: 30%;
+    }
+
+    .australia {
+      top: 75%;
+      left: 80%;
+    }
+
+    .antarctica {
+      bottom: 2%;
+      left: 45%;
+    }
+
+    .india {
+      top: 45%;
+      left: 68%;
+    }
+  </style>
+</head>
+<body>
+  <div class="map-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png" 
+         alt="World Map" class="world-map">
+    <span class="label africa">Africa</span>
+    <span class="label asia">Asia</span>
+    <span class="label europe">Europe</span>
+    <span class="label north-america">North America</span>
+    <span class="label south-america">South America</span>
+    <span class="label australia">Australia</span>
+    <span class="label antarctica">Antarctica</span>
+    <span class="label india">India</span>
+  </div>
+</body>
+</html>
