@@ -9,40 +9,39 @@
 <body>
     <div class="container">
         <h2>University Survey Form</h2>
-        <!-- Form method="get" is used to pass data to success.html via URL parameters -->
+
         <form id="userForm" action="./ws10_success.html" method="get" onsubmit="return validateForm()">
             
-            <!-- Name (only alphabets, cannot be empty) -->
+
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required 
                    onblur="validateName()">
             <span class="error-message" id="nameError"></span>
 
-            <!-- Email (must end with .com, .edu, or .in) -->
             <label for="email">Email ID:</label>
             <input type="email" id="email" name="email" required
                    onblur="validateEmail()">
             <span class="error-message" id="emailError"></span>
 
-            <!-- Password (min 6 chars, must contain at least one number) -->
+
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required
                    onblur="validatePassword()">
             <span class="error-message" id="passwordError"></span>
 
-            <!-- Mobile Number (exactly 10 digits) -->
+
             <label for="mobile">Mobile Number:</label>
             <input type="text" id="mobile" name="mobile" required maxlength="10"
                    onblur="validateMobile()">
             <span class="error-message" id="mobileError"></span>
 
-            <!-- Date of Birth (date picker) -->
+
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" name="dob" required
                    onblur="validateDob()">
             <span class="error-message" id="dobError"></span>
             
-            <!-- Rating (Radio Buttons: 1 to 5 stars) -->
+
             <label>Feedback Rating (1⭐ to 5⭐):</label>
             <div class="radio-group" id="ratingGroup" onchange="validateRating()">
                 <label><input type="radio" name="rating" value="1⭐" required> 1⭐</label>
@@ -53,7 +52,7 @@
             </div>
             <span class="error-message" id="ratingError"></span>
 
-            <!-- Interests (Checkboxes) -->
+
             <label>Interests:</label>
             <div class="checkbox-group" id="interestsGroup">
                 <label><input type="checkbox" name="interests" value="Sports"> Sports</label>
@@ -65,13 +64,11 @@
             <span class="error-message" id="interestsError"></span>
 
 
-            <!-- Buttons -->
+          
             <div class="buttons">
-                <!-- Submit button triggers form validation on click (onsubmit) -->
+               
                 <button type="submit">Submit</button>
-                <!-- Display button calls the function to show alert box -->
                 <button type="button" onclick="displayData()">Display All Data</button>
-                <!-- Reset button clears fields -->
                 <button type="reset" onclick="resetFormState()">Reset</button>
             </div>
         </form>

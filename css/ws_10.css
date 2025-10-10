@@ -1,4 +1,4 @@
-/* Global Reset and Body Styling */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #e9ecef;
@@ -9,7 +9,7 @@ body {
     margin: 0;
 }
 
-/* Main Container */
+
 .container {
     background: #ffffff;
     padding: 40px;
@@ -27,7 +27,7 @@ h2 {
     padding-bottom: 10px;
 }
 
-/* Form Layout */
+
 #userForm label {
     display: block;
     margin-top: 15px;
@@ -51,14 +51,14 @@ h2 {
     transition: border-color 0.3s;
 }
 
-/* Focus State */
+
 #userForm input:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
 }
 
-/* Radio and Checkbox Groups Styling */
+
 .radio-group, .checkbox-group {
     display: flex;
     flex-wrap: wrap;
@@ -78,27 +78,26 @@ h2 {
 }
 
 
-/* Validation Feedback Styling */
 
-/* Red Error Message */
+
+
 .error-message {
     display: block;
-    color: #dc3545; /* Red color */
+    color: #dc3545; 
     font-size: 0.85em;
-    height: 1.2em; /* Ensure consistent spacing */
+    height: 1.2em; 
 }
 
-/* Green Success Indicator */
 .success-message {
     display: block;
-    color: #28a745; /* Green color */
+    color: #28a745; 
     font-size: 1.1em;
     font-weight: bold;
     height: 1.2em;
-    margin-top: -10px; /* Adjust spacing to align with input */
+    margin-top: -10px; 
 }
 
-/* Input Border Feedback (Optional but helpful) */
+
 input.invalid {
     border-color: #dc3545;
 }
@@ -106,7 +105,7 @@ input.valid {
     border-color: #28a745;
 }
 
-/* Buttons Styling */
+
 .buttons {
     display: flex;
     justify-content: space-between;
@@ -130,7 +129,7 @@ input.valid {
     color: white;
 }
 
-.buttons button[type="button"] { /* Display All Data button */
+.buttons button[type="button"] { 
     background-color: #ffc107;
     color: #212529;
 }
