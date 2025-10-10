@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>User Registration Form</h2>
+    <form id="userForm" action="success.html" method="get">
+      
+      <!-- Name -->
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required 
+             onkeyup="validateName()" onblur="validateName()">
+      <span class="error" id="nameError"></span>
+
+      <!-- Email -->
+      <label for="email">Email ID:</label>
+      <input type="email" id="email" name="email" required
+             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|edu|in)$"
+             onkeyup="validateEmail()" onblur="validateEmail()">
+      <span class="error" id="emailError"></span>
+
+      <!-- Mobile -->
+      <label for="mobile">Mobile Number:</label>
+      <input type="text" id="mobile" name="mobile" required maxlength="10"
+             pattern="^[0-9]{10}$"
+             onkeyup="validateMobile()" onblur="validateMobile()">
+      <span class="error" id="mobileError"></span>
+
+      <!-- DOB -->
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required
+             onblur="validateDob()">
+      <span class="error" id="dobError"></span>
+
+      <!-- City -->
+      <label for="city">City:</label>
+      <select id="city" name="city" required onblur="validateCity()">
+        <option value="">--Select City--</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Bangalore">Bangalore</option>
+      </select>
+      <span class="error" id="cityError"></span>
+
+      <!-- Buttons -->
+      <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
