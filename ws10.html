@@ -3,98 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Survey Form</title>
+    <title>Interactive Survey Form</title>
     <link rel="stylesheet" href="./ws_10.css">
 </head>
 <body>
-    
-    <!-- Custom Modal for Alerts -->
-    <div id="customAlertModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3>Form Data Summary</h3>
-            <pre id="modalData"></pre>
-            <button class="buttons" style="margin-top: 15px;" onclick="closeModal()">Close</button>
-        </div>
-    </div>
-
-    <!-- Main Content Container -->
     <div class="container">
-        <!-- FORM VIEW -->
-        <div id="formView">
-            <h2>University Survey Form</h2>
-            <form id="userForm" onsubmit="return handleFormSubmission(event)">
-                
-                <!-- Name -->
-                <label for="name">Full Name:</label>
-                <div class="input-group">
-                    <input type="text" id="name" name="name" required onblur="validateName()" onkeyup="validateName()">
-                    <span class="success-tick" id="nameSuccess"></span>
-                </div>
-                <span class="error" id="nameError"></span>
+        <h2>University Survey Form</h2>
+        <!-- Form method="get" is used to pass data to success.html via URL parameters -->
+        <form id="userForm" action="./ws10_success.html" method="get" onsubmit="return validateForm()">
+            
+            <!-- Name (only alphabets, cannot be empty) -->
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required 
+                   onblur="validateName()">
+            <span class="error-message" id="nameError"></span>
 
-                <!-- Email -->
-                <label for="email">Email ID:</label>
-                <div class="input-group">
-                    <input type="email" id="email" name="email" required onblur="validateEmail()" onkeyup="validateEmail()">
-                    <span class="success-tick" id="emailSuccess"></span>
-                </div>
-                <span class="error" id="emailError"></span>
+            <!-- Email (must end with .com, .edu, or .in) -->
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" name="email" required
+                   onblur="validateEmail()">
+            <span class="error-message" id="emailError"></span>
 
-                <!-- Password -->
-                <label for="password">Password:</label>
-                <div class="input-group">
-                    <input type="password" id="password" name="password" required onblur="validatePassword()" onkeyup="validatePassword()">
-                    <span class="success-tick" id="passwordSuccess"></span>
-                </div>
-                <span class="error" id="passwordError"></span>
+            <!-- Password (min 6 chars, must contain at least one number) -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required
+                   onblur="validatePassword()">
+            <span class="error-message" id="passwordError"></span>
 
-                <!-- Mobile -->
-                <label for="mobile">Mobile Number (10 digits):</label>
-                <div class="input-group">
-                    <input type="text" id="mobile" name="mobile" required maxlength="10" onblur="validateMobile()" onkeyup="validateMobile()">
-                    <span class="success-tick" id="mobileSuccess"></span>
-                </div>
-                <span class="error" id="mobileError"></span>
+            <!-- Mobile Number (exactly 10 digits) -->
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile" required maxlength="10"
+                   onblur="validateMobile()">
+            <span class="error-message" id="mobileError"></span>
 
-                <!-- DOB -->
-                <label for="dob">Date of Birth:</label>
-                <div class="input-group">
-                    <input type="date" id="dob" name="dob" required onblur="validateDob()">
-                    <span class="success-tick" id="dobSuccess"></span>
-                </div>
-                <span class="error" id="dobError"></span>
+            <!-- Date of Birth (date picker) -->
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required
+                   onblur="validateDob()">
+            <span class="error-message" id="dobError"></span>
+            
+            <!-- Rating (Radio Buttons: 1 to 5 stars) -->
+            <label>Feedback Rating (1⭐ to 5⭐):</label>
+            <div class="radio-group" id="ratingGroup" onchange="validateRating()">
+                <label><input type="radio" name="rating" value="1⭐" required> 1⭐</label>
+                <label><input type="radio" name="rating" value="2⭐"> 2⭐</label>
+                <label><input type="radio" name="rating" value="3⭐"> 3⭐</label>
+                <label><input type="radio" name="rating" value="4⭐"> 4⭐</label>
+                <label><input type="radio" name="rating" value="5⭐"> 5⭐</label>
+            </div>
+            <span class="error-message" id="ratingError"></span>
 
-                <!-- Rating -->
-                <label>Rating (1 ⭐ to 5 ⭐):</label>
-                <div class="rating-group" id="ratingGroup" onchange="validateRating()">
-                    <!-- Stars generated dynamically via JS below -->
-                </div>
-                <span class="error" id="ratingError"></span>
-                
-                <!-- Interests -->
-                <label for="interests">Interests (Select one or more):</label>
-                <div class="interests-group" id="interestsGroup" onchange="validateInterests()">
-                    <label><input type="checkbox" name="interest" value="Sports"> Sports</label>
-                    <label><input type="checkbox" name="interest" value="Music"> Music</label>
-                    <label><input type="checkbox" name="interest" value="Coding"> Coding</label>
-                    <label><input type="checkbox" name="interest" value="Reading"> Reading</label>
-                    <label><input type="checkbox" name="interest" value="Travel"> Travel</label>
-                </div>
-                <span class="error" id="interestsError"></span>
+            <!-- Interests (Checkboxes) -->
+            <label>Interests:</label>
+            <div class="checkbox-group" id="interestsGroup">
+                <label><input type="checkbox" name="interests" value="Sports"> Sports</label>
+                <label><input type="checkbox" name="interests" value="Music"> Music</label>
+                <label><input type="checkbox" name="interests" value="Coding"> Coding</label>
+                <label><input type="checkbox" name="interests" value="Reading"> Reading</label>
+                <label><input type="checkbox" name="interests" value="Travel"> Travel</label>
+            </div>
+            <span class="error-message" id="interestsError"></span>
 
-                <!-- Buttons -->
-                <div class="buttons">
-                    <button type="submit">Submit</button>
-                    <button type="button" id="displayData" onclick="displayFormData()">Display Details</button>
-                    <button type="reset" onclick="resetFormState()">Reset</button>
-                </div>
-            </form>
-        </div>
 
-        
+            <!-- Buttons -->
+            <div class="buttons">
+                <!-- Submit button triggers form validation on click (onsubmit) -->
+                <button type="submit">Submit</button>
+                <!-- Display button calls the function to show alert box -->
+                <button type="button" onclick="displayData()">Display All Data</button>
+                <!-- Reset button clears fields -->
+                <button type="reset" onclick="resetFormState()">Reset</button>
+            </div>
+        </form>
     </div>
-
     <script src="./ws_10.js"></script>
 </body>
 </html>
