@@ -105,7 +105,7 @@ function validateRating() {
     }
 }
 
-/
+
 function validateForm() {
     
     const nameValid = validateName();
