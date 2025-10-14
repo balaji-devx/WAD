@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+    <link rel="stylesheet" href="./css/ws11.css">
+    <script src="./js/ws11.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div>
+            <a href="./ws11.html">Home</a>
+            <a href="./user.html">UserDetail</a>
+            <a href="./addExpense.html">ExpenseMade</a>
+            <a href="./summary.html">Summary</a>
+            <a href="#" id="exitApp">Exit</a>
+        </div>
+        <div class="nav-info">
+            <span class="username-display"></span>
+            <span class="datetime-display"></span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>User Details</h2>
+        <div id="userDetailsDisplay"></div>
+        
+        <form id="userForm" style="display: none;">
+            <div>
+                <label for="userName">User Name (1-3 words):</label>
+                <input type="text" id="userName" required pattern="^(\w+(\s\w+){0,2})$">
+            </div>
+            <div>
+                <label for="userEmail">Contact Email (xxx.yz@xxxx.co.in):</label>
+                <input type="email" id="userEmail" required pattern="[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.co\.in$">
+            </div>
+            <div>
+                <label for="userRole">User Role:</label>
+                <select id="userRole" required>
+                    <option value="" disabled selected>Select role</option>
+                    <option value="Student">Student</option>
+                    <option value="Worker">Worker</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Employer">Employer</option>
+                </select>
+            </div>
+            <button type="submit" id="submitUserBtn">Save Details</button>
+            <button type="button" id="cancelEditBtn" style="display:none;">Cancel</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const displayDiv = document.getElementById('userDetailsDisplay');
+            const form = document.getElementById('userForm');
+            const submitBtn = document.getElementById('submitUserBtn');
+            const cancelBtn = document.getElementById('cancelEditBtn');
+            const inputs = form.querySelectorAll('input, select');
+            let isEditing = false;
+
+            function loadUserView() {
+                const user = JSON.parse(localStorage.getItem(USER_KEY));
+                displayDiv.innerHTML = '';
+                form.style.display = 'none';
+
+                if (user) {
+                    displayDiv.innerHTML = `
+                        <p><strong>Name:</strong> ${user.userName}</p>
+                        <p><strong>Email:</strong> ${user.userEmail}</p>
+                        <p><strong>Role:</strong> ${user.userRole}</p>
+                        <button id="editUserBtn">Edit</button>
+                    `;
+                    document.getElementById('editUserBtn').addEventListener('click', startEdit);
+                } else {
+                    form.style.display = 'block';
+                    submitBtn.textContent = 'Submit';
+                    inputs.forEach(input => input.value = '');
+                }
+            }
+
+            function startEdit() {
+                isEditing = true;
+                const user = JSON.parse(localStorage.getItem(USER_KEY));
+                document.getElementById('userName').value = user.userName;
+                document.getElementById('userEmail').value = user.userEmail;
+                document.getElementById('userRole').value = user.userRole;
+
+                displayDiv.style.display = 'none';
+                form.style.display = 'block';
+                submitBtn.textContent = 'Save';
+                cancelBtn.style.display = 'inline-block';
+            }
+            
+            cancelBtn.addEventListener('click', () => { isEditing = false; loadUserView(); });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (form.checkValidity()) {
+                    const userData = {
+                        userName: document.getElementById('userName').value,
+                        userEmail: document.getElementById('userEmail').value,
+                        userRole: document.getElementById('userRole').value
+                    };
+                    localStorage.setItem(USER_KEY, JSON.stringify(userData));
+                    alert(`User details saved/updated.`);
+                    isEditing = false;
+                    loadUserView();
+                    loadNavbar(); // Update the main display
+                } else {
+                    alert('Please fill all fields correctly.');
+                }
+            });
+
+            // Enable/Disable submit based on HTML5 validity check
+            const checkValidity = () => submitBtn.disabled = !form.checkValidity();
+            inputs.forEach(input => input.addEventListener('input', checkValidity));
+            
+            loadUserView();
+            checkValidity();
+        });
+    </script>
+</body>
+</html>

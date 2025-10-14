@@ -2,30 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Expense</title>
+    <title>Home</title>
     <link rel="stylesheet" href="./css/ws11.css">
+    <script src="./js/ws11.js" defer></script>
 </head>
 <body>
-    <div class="nav-bar">
-        <h2 class="logo">Tracker</h2>
-        <div class="links"> 
-            <a href="./user.html">User</a>
-            <a href="./expense.html">Expense</a>
+    <nav class="navbar">
+        <div>
+            <a href="./ws11.html">Home</a>
+            <a href="./user.html">UserDetail</a>
+            <a href="./addExpense.html">ExpenseMade</a>
             <a href="./summary.html">Summary</a>
+            <a href="#" id="exitApp">Exit</a>
         </div>
+        <div class="nav-info">
+            <span class="username-display"></span>
+            <span class="datetime-display"></span>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Welcome!</h2>
+        <p>This is a simple Personal Expense History application. Use the navigation to manage your user profile and track expenses using local storage.</p>
     </div>
-
-    <div class="hero">
-        <h1 class="heading">
-            Welcome to the Expense Tracker!
-        </h1>
-
-        <p class="left">
-            Manage your expenses easily without worrying about anything!
-            We offer our services to make the world a better one.
-        </p>
-    </div>
-
 </body>
 </html>

@@ -1,63 +1,64 @@
-*{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-}
-
-.nav-bar{
-    display: flex;
-    background-color: rgb(57, 100, 216);
-    font-family: monospace;
-    color: white;
-    min-height: 75px;
-    font-size: 1.5rem;
-    align-items: center;
-    justify-content: space-between;
-    text-align: left;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.links{
-    text-align: right;
-}
-
-
-a{
-    text-decoration: none;
-    color: white;
+/* style.css - Minimal required styling, no external images */
+body {
     font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    /* REPLACEMENT: Use a simple, light gradient or solid color instead of an image URL */
+    background: linear-gradient(to right, #f4f4f4, #e0e0e0); 
+    background-size: cover;
 }
-
-a:hover{
-    text-decoration: underline;
-    color: aliceblue;
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
-
-.hero{
-    margin-top: 10px;
-    padding: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    max-height: 500px;
-    background-color: rgb(51, 96, 221);
-    border-radius: 30px;
+.navbar a {
+    float: left;
+    display: block;
     color: white;
-}
-
-
-.heading{
     text-align: center;
-    font-family: monospace;
-    font-weight: bolder;
-    font-size: 2rem;
+    padding: 14px 16px;
+    text-decoration: none;
 }
-
-
-.left{
-    max-width: 49%;
-    margin-top: 10px;
-    padding-left: 10px;
-    line-height: 1.3rem;
+.navbar a:hover {
+    background-color: #555;
+}
+.nav-info {
+    color: white;
+    padding-right: 15px;
+}
+.container {
+    width: 400px; /* Required width */
+    margin: 50px auto; /* Centered form */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+}
+form div {
+    margin-bottom: 10px;
+}
+input[type="text"], input[type="email"], input[type="number"], input[type="date"], select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+button {
+    background-color: #007bff; /* Similar button style */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }

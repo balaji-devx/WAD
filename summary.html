@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary</title>
+    <link rel="stylesheet" href="./css/ws11.css">
+    <script src="./js/ws11.js" defer></script>
+    <style>
+        #expenseTable { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        #expenseTable th, #expenseTable td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        #expenseTable th { background-color: #f2f2f2; }
+        .total-summary { font-weight: bold; margin: 15px 0; padding: 10px; background-color: #e6f7ff; text-align: center; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div>
+            <a href="./ws11.html">Home</a>
+            <a href="./user.html">UserDetail</a>
+            <a href="./addExpense.html">ExpenseMade</a>
+            <a href="./summary.html">Summary</a>
+            <a href="#" id="exitApp">Exit</a>
+        </div>
+        <div class="nav-info">
+            <span class="username-display"></span>
+            <span class="datetime-display"></span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Expense Summary</h2>
+        
+        <h3>User Info:</h3>
+        <div id="userInfoSummary"><p>Loading user details...</p></div>
+        
+        <div class="total-summary" id="totalExpenses"></div>
+        
+        <h3>Expenses List:</h3>
+        <table id="expenseTable">
+            <thead>
+                <tr><th>Date</th><th>Category</th><th>Amount (₹)</th></tr>
+            </thead>
+            <tbody id="expenseListBody"></tbody>
+        </table>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="closeSummaryBtn">Close Summary & Go Home</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem(USER_KEY));
+            const expenses = JSON.parse(localStorage.getItem(EXPENSES_KEY)) || [];
+            
+            const userInfoDiv = document.getElementById('userInfoSummary');
+            const totalExpensesDiv = document.getElementById('totalExpenses');
+            const expenseListBody = document.getElementById('expenseListBody');
+
+            // 1. Display User Details
+            userInfoDiv.innerHTML = user ? 
+                `<p>Name: ${user.userName}<br>Role: ${user.userRole}<br>Email: ${user.userEmail}</p>` :
+                `<p style="color:red;">User details not set.</p>`;
+
+            // 2. Populate Expense List and Calculate Total
+            let total = 0;
+            if (expenses.length > 0) {
+                expenses.forEach(expense => {
+                    const row = expenseListBody.insertRow();
+                    row.insertCell().textContent = expense.date;
+                    row.insertCell().textContent = expense.category;
+                    row.insertCell().textContent = parseFloat(expense.amount).toFixed(2);
+                    total += parseFloat(expense.amount);
+                });
+            } else {
+                const row = expenseListBody.insertRow();
+                row.insertCell().textContent = 'No expenses recorded.';
+                row.cells[0].colSpan = 3;
+            }
+
+            // 3. Display Total
+            totalExpensesDiv.textContent = `TOTAL SPENT SO FAR: ₹${total.toFixed(2)}`;
+
+            // 4. Close button
+            document.getElementById('closeSummaryBtn').addEventListener('click', () => {
+                window.location.href = 'ws11.html';
+            });
+        });
+    </script>
+</body>
+</html>
