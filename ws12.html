@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSG Tech RegExp Homework Solutions</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body {
+font-family: 'Inter', sans-serif;
+background-color: #f7f9fc;
+}
+.card {
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+transition: transform 0.3s ease-in-out;
+}
+.card:hover {
+transform: translateY(-2px);
+}
+.result-box {
+min-height: 4rem;
+max-height: 10rem;
+overflow-y: auto;
+white-space: pre-wrap;
+word-wrap: break-word;
+
+}
+</style>
+</head>
+<body class="p-4 sm:p-8">
+
+<div class="max-w-6xl mx-auto">
+<h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
+RegExp Problems
+</h1>
+<p class="text-lg text-indigo-600 mb-8"></p>
+
+<div id="results-display" class="fixed top-0 left-0 w-full p-4 bg-indigo-500 text-white
+text-center z-50 transition-all duration-300 transform -translate-y-full hidden">
+<span id="result-message"></span>
+
+<button onclick="hideResult()" class="ml-4 font-bold text-sm bg-indigo-700 hover:bg-
+indigo-800 px-3 py-1 rounded-full">Close</button>
+
+</div>
+
+<script>
+function showResult(message, isError = false) {
+const display = document.getElementById('results-display');
+const msgElement = document.getElementById('result-message');
+msgElement.textContent = message;
+
+display.classList.remove('hidden', 'bg-red-500', 'bg-indigo-500');
+display.classList.add(isError ? 'bg-red-500' : 'bg-indigo-500', 'translate-y-0');
+
+setTimeout(() => {
+if (!display.classList.contains('hidden')) {
+hideResult();
+
+}
+}, 8000);
+}
+
+function hideResult() {
+document.getElementById('results-display').classList.add('-translate-y-full');
+setTimeout(() => {
+document.getElementById('results-display').classList.add('hidden');
+}, 300);
+}
+</script>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<!-- Problem 1: Roll Number Validation -->
+<div class="card bg-white p-6 rounded-xl border border-gray-200">
+<h2 class="text-xl font-semibold text-gray-800 mb-4">1. Validate Roll
+Number</h2>
+<p class="text-sm text-gray-500 mb-3">Range: 25MX101 to 129 AND 25MX201 to
+230</p>
+<input type="text" id="rollInput" placeholder="e.g., 25MX101" class="w-full p-2
+border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+<button onclick="validateRoll()" class="mt-4 w-full bg-indigo-600 text-white py-2
+rounded-lg hover:bg-indigo-700 transition duration-150">Validate Roll Number</button>
+
+<div id="rollOutput" class="result-box mt-4 p-3 bg-gray-50 rounded-lg text-sm text-
+gray-700 border border-gray-200"></div>
+
+</div>
+
+<!-- Problem 2: Words with Vowels -->
+<div class="card bg-white p-6 rounded-xl border border-gray-200">
+
+<h2 class="text-xl font-semibold text-gray-800 mb-4">2. Match Words with
+Vowels</h2>
+<p class="text-sm text-gray-500 mb-3">Matches words with at least one
+vowel.</p>
+<textarea id="vowelInput" placeholder="Enter text here. e.g., Rhythm sky fly moon
+star" rows="2" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500
+focus:border-indigo-500 resize-none"></textarea>
+<button onclick="matchVowelWords()" class="mt-4 w-full bg-indigo-600 text-white
+py-2 rounded-lg hover:bg-indigo-700 transition duration-150">Extract Vowel
+Words</button>
+<div id="vowelOutput" class="result-box mt-4 p-3 bg-gray-50 rounded-lg text-sm
+text-gray-700 border border-gray-200"></div>
+</div>
+
+<!-- Problem 3: Extract Date Strings -->
+<div class="card bg-white p-6 rounded-xl border border-gray-200">
+<h2 class="text-xl font-semibold text-gray-800 mb-4">3. Extract Date Strings</h2>
+<p class="text-sm text-gray-500 mb-3">Format: DD-MMM-YYYY (case-insensitive
+month)</p>
+<textarea id="dateInput" placeholder="Enter text with dates. e.g., The meeting is
+on 11-NOV-2024 and 01-feb-2025." rows="2" class="w-full p-2 border border-gray-300
+rounded-lg focus:ring-indigo-500 focus:border-indigo-500 resize-none"></textarea>
+<button onclick="extractDates()" class="mt-4 w-full bg-indigo-600 text-white py-2
+rounded-lg hover:bg-indigo-700 transition duration-150">Find Dates</button>
+<div id="dateOutput" class="result-box mt-4 p-3 bg-gray-50 rounded-lg text-sm
+text-gray-700 border border-gray-200"></div>
+</div>
+
+<!-- Problem 4: Prefix Binary Numbers -->
+<div class="card bg-white p-6 rounded-xl border border-gray-200">
+<h2 class="text-xl font-semibold text-gray-800 mb-4">4. Prefix Binary
+Numbers</h2>
+<p class="text-sm text-gray-500 mb-3">Prefixes isolated binary numbers with
+`\b`.</p>
+
+<textarea id="binaryInput" placeholder="e.g., The value 10110 and 1100 are binary
+
+and also 110" rows="2" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-
+indigo-500 focus:border-indigo-500 resize-none"></textarea>
+
+<button onclick="prefixBinary()" class="mt-4 w-full bg-indigo-600 text-white py-2
+rounded-lg hover:bg-indigo-700 transition duration-150">Prefix Binary</button>
+<div id="binaryOutput" class="result-box mt-4 p-3 bg-gray-50 rounded-lg text-sm
+text-gray-700 border border-gray-200"></div>
+</div>
+
+<!-- Problem 5: PAN Card Validation -->
+<div class="md:col-span-2 card bg-white p-6 rounded-xl border border-gray-200">
+<h2 class="text-xl font-semibold text-gray-800 mb-4">5. PAN Card Validation &
+Details Extraction</h2>
+<p class="text-sm text-gray-500 mb-3">Format: [AAA-ZZZ][Status][Surname
+Initial][0001-9999][Check Digit]</p>
+<input type="text" id="panInput" placeholder="e.g., ABCTP1234D (Use P for
+
+Individual)" maxlength="10" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-
+indigo-500 focus:border-indigo-500 uppercase">
+
+<button onclick="validatePan()" class="mt-4 w-full bg-indigo-600 text-white py-2
+rounded-lg hover:bg-indigo-700 transition duration-150">Validate PAN</button>
+<div id="panOutput" class="result-box mt-4 p-3 bg-gray-50 rounded-lg text-sm
+text-gray-700 border border-gray-200"></div>
+</div>
+
+</div>
+</div>
+
+<script>
+function validateRoll() {
+const input = document.getElementById('rollInput').value.trim().toUpperCase();
+const output = document.getElementById('rollOutput');
+
+const rollRegex = /^25MX(10[1-9]|11[0-9]|12[0-9]|20[1-9]|21[0-9]|22[0-9]|230)$/;
+
+if (rollRegex.test(input)) {
+output.innerHTML = `<span class="font-bold text-green-600">SUCCESS:</span>
+The roll number <span class="text-indigo-600">${input}</span> is VALID.`;
+showResult(`Roll Number ${input} is VALID.`, false);
+} else {
+output.innerHTML = `<span class="font-bold text-red-600">FAILURE:</span> The
+roll number <span class="text-indigo-600">${input}</span> is INVALID or outside the range
+(101-129 or 201-230).`;
+showResult(`Roll Number ${input} is INVALID.`, true);
+}
+}
+
+function matchVowelWords() {
+const input = document.getElementById('vowelInput').value;
+const output = document.getElementById('vowelOutput');
+
+const vowelWordRegex = /\b[a-z]*[aeiou][a-z]*\b/gi;
+const matches = input.match(vowelWordRegex);
+
+if (matches && matches.length > 0) {
+output.innerHTML = `<span class="font-bold">Words Found
+(${matches.length}):</span> ${matches.join(', ')}`;
+} else {
+output.innerHTML = 'No words containing at least one vowel were found.';
+}
+}
+
+function extractDates() {
+const input = document.getElementById('dateInput').value;
+const output = document.getElementById('dateOutput');
+
+const dateRegex = /\b\d{1,2}-[A-Z]{3}-\d{4}\b/gi;
+const matches = input.match(dateRegex);
+
+if (matches && matches.length > 0) {
+output.innerHTML = `<span class="font-bold">Extracted Dates
+(${matches.length}):</span> ${matches.join(', ')}`;
+} else {
+output.innerHTML = 'No dates found in the format DD-MMM-YYYY.';
+}
+}
+
+function prefixBinary() {
+const input = document.getElementById('binaryInput').value;
+const output = document.getElementById('binaryOutput');
+
+const binaryRegex = /\b[01]+\b/g;
+const prefixedString = input.replace(binaryRegex, '\\b$&');
+
+output.innerHTML = `<span class="font-bold">Original:</span> ${input}<br><span
+class="font-bold">Prefixed:</span> ${prefixedString}`;
+}
+
+function validatePan() {
+const input = document.getElementById('panInput').value.trim().toUpperCase();
+const output = document.getElementById('panOutput');
+
+const panRegex = /^([A-Z]{3})([PCFHAT])([A-Z])(\d{4})([A-Z])$/;
+
+const statusMap = {
+
+'P': 'Individual',
+'C': 'Company',
+'H': 'HUF (Hindu Undivided Family)',
+'F': 'Firm',
+'T': 'Trust',
+'A': 'Association of Persons'
+};
+
+if (panRegex.test(input)) {
+const match = input.match(panRegex);
+const statusChar = match[2];
+const holderInitial = match[3];
+
+const status = statusMap[statusChar] || 'Other/Unknown Entity';
+
+output.innerHTML = `
+<p class="font-bold text-green-600 mb-2">VALID PAN CARD</p>
+<p><span class="font-semibold">PAN Holder Status:</span> ${status}
+(Character: <span class="text-indigo-600">${statusChar}</span>)</p>
+<p><span class="font-semibold">Card Holder's Name Initial (Last Name):</span>
+<span class="text-indigo-600">${holderInitial}</span></p>
+`;
+showResult(`PAN is VALID. Status: ${status}.`, false);
+
+} else {
+output.innerHTML = `<span class="font-bold text-red-600">INVALID PAN:</span>
+The format ${input} does not match the required 10-character alphanumeric structure.`;
+showResult('PAN is INVALID. Check format.', true);
+}
+}
+
+</script>
+</body>
+</html>
